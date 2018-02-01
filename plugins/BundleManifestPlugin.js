@@ -1,5 +1,4 @@
 const path = require('path');
-const hasha = require('hasha');
 const fs = require('fs');
 
 module.exports = function (bundler) {
@@ -23,29 +22,15 @@ module.exports = function (bundler) {
 
   bundler.on('bundled', (bundle) => {
     const dir = path.dirname(bundle.name);
-
     logger.status('📦', 'PackageManifestPlugin');
     logger.status('📁', `     dir : ${dir}`);
 
-    const f = bundle.name;
-    const hash = hasha.fromFileSync(f, { algorithm: 'sha256' });
-    const ext = path.extname(f);
-    const basename = path.basename(f, ext);
-    const hashFile = path.join(dir, `${basename}-${hash}${ext}`);
-
+    const manifestValue = Array.from(bundle.entryAsset.parentBundle.childBundles)
+        .map(bundle => path.relative(dir, bundle.name))
     logger.status('✓', `  bundle : ${bundle.name}`);
-    logger.status('✓', `        => ${hashFile}`);    
-
-    // create hash included bundle file
-    fs.createReadStream(f).pipe(fs.createWriteStream(path.resolve(dir, hashFile)));
 
     const manifestPath = path.resolve(dir, 'parcel-manifest.json');
-
     logger.status('📄', `manifest : ${manifestPath}`);
-
-    const manifestValue = readManifestJson(manifestPath);
-    manifestValue[path.relative(dir, f)] = path.relative(dir, hashFile);
-
     fs.writeFileSync(manifestPath, JSON.stringify(manifestValue));
   });
 };
