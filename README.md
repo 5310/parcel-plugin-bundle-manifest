@@ -1,4 +1,5 @@
-Parcel plugin for generating an bundle manifest.
+Parcel plugin for generating an bundle manifest containing a list of all the child bundles of the entry point. 
+Suitable for use with service workers.
 
 Usage
 =======
@@ -6,7 +7,7 @@ Usage
 ### install
 
 ```
-npm install --save-dev parcel-plugin-bundle-manifest
+npm install --save-dev @5310/parcel-plugin-bundle-manifest
 ```
 
 ### build
@@ -17,10 +18,8 @@ parcel build entry.js
 
 ### output
 
-output manifest file to same directory as the bundle file.
+Outputs manifest file to same directory as the bundle file.
 
-- dist/entry.js
-- dist/entry-{hash}.js
 - dist/parcel-manifest.json
 
 License
