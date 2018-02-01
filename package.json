@@ -1,7 +1,7 @@
 {
-  "name": "@scio/parcel-plugin-bundle-manifest",
+  "name": "@scio/parcel-plugin-child-bundles-manifest",
   "version": "1.1.0",
-  "description": "Parcel plugin for generating an bundle manifest for service workers.",
+  "description": "Parcel plugin for generating a manifest of a bundle and its children for service workers.",
   "main": "index.js",
   "keywords": [
     "parcel",
