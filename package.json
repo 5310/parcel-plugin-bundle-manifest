@@ -1,5 +1,5 @@
 {
-  "name": "@scio/parcel-plugin-child-bundles-manifest",
+  "name": "parcel-plugin-child-bundles-manifest",
   "version": "1.1.0",
   "description": "Parcel plugin for generating a manifest of a bundle and its children for service workers.",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "manifest",
     "service worker"
   ],
-  "repository": "https://github.com/5310/parcel-plugin-bundle-manifest.git",
+  "repository": "https://github.com/5310/parcel-plugin-child-bundles-manifest.git",
   "authors": [
     "mugi-uno <mugi.uno@gmail.com>",
     "Sayantan Chaudhuri <sayantan.chaudhuri@gmail.com>"
