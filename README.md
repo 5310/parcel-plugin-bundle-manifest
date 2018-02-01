@@ -7,7 +7,7 @@ Usage
 ### install
 
 ```
-npm install --save-dev @scio/parcel-plugin-bundle-manifest
+npm install --save-dev parcel-plugin-child-bundles-manifest
 ```
 
 ### build
