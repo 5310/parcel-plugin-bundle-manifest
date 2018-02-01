@@ -25,8 +25,11 @@ module.exports = function (bundler) {
     logger.status('📦', 'PackageManifestPlugin');
     logger.status('📁', `     dir : ${dir}`);
 
-    const manifestValue = Array.from(bundle.entryAsset.parentBundle.childBundles)
-        .map(bundle => path.relative(dir, bundle.name))
+    const manifestValue = [path.relative(dir, bundle.name)]
+      .concat(
+        Array.from(bundle.entryAsset.parentBundle.childBundles)
+          .map(bundle => path.relative(dir, bundle.name))
+      );
     logger.status('✓', `  bundle : ${bundle.name}`);
 
     const manifestPath = path.resolve(dir, 'parcel-manifest.json');
